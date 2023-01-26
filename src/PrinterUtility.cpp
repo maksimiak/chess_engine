@@ -20,8 +20,8 @@ void PrinterUtility::set_bitboard(U64 bitboard)
 }
 void PrinterUtility::print_bitboard()
 {
-    int square = 0;
-    int square_64 = 0;
+    int square;
+    int square_64;
 
     for (int rank = RANK_8; rank >= RANK_1; --rank)
     {
