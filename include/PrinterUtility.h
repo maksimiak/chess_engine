@@ -1,7 +1,7 @@
 #pragma once
 #include "../definitions.h"
 
-const std::array<int, 64> BIT_BOARDS =
+const std::array<int, 64> BIT_BOARD =
 {
     63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
     51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
@@ -18,6 +18,7 @@ public:
     void print_bitboard();
     void set_square(int square);
     int count_bits();
+    int pop_bit();
 
 protected:
 

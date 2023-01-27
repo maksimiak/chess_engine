@@ -48,6 +48,15 @@ void PrinterUtility::set_square(int square)
 }
 int PrinterUtility::count_bits()
 {
-
-
+    int r;
+    U64 temp_bitboard = m_bitboard;
+    for (r = 0; temp_bitboard; r++, temp_bitboard &= temp_bitboard - 1);
+    return r;
+}
+int PrinterUtility::pop_bit()
+{
+    U64 b = m_bitboard ^ (m_bitboard - 1);
+    unsigned int fold = (unsigned) ((b & 0xffffffff) ^ (b >> 32));
+    m_bitboard &= (m_bitboard - 1);
+    return BIT_BOARD[(fold * 0x783a9b23) >> 26];
 }
