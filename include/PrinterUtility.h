@@ -17,12 +17,19 @@ public:
     void set_bitboard(U64 bitboard);
     void print_bitboard();
     void set_square(int square);
+    void set_bit(int bit);
+    void clear_bit(int bit);
     int count_bits();
     int pop_bit();
 
 protected:
 
 private:
+
+    void fill_masks();
+
     U64 m_bitboard;
+    std::array<U64, 64> m_set_mask;
+    std::array<U64, 64> m_clear_mask;
     U64 m_shifter = 1ULL;
 };

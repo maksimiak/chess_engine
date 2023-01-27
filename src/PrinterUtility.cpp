@@ -4,9 +4,14 @@
 
 PrinterUtility::PrinterUtility(U64 bitboard)
     :   m_bitboard(bitboard)
+    ,   m_set_mask()
+    ,   m_clear_mask()
     ,   m_shifter(1ULL)
 {
-    //ctor
+    m_set_mask.fill(0ULL);
+    m_clear_mask.fill(0ULL);
+    fill_masks();
+
 }
 
 PrinterUtility::~PrinterUtility()
@@ -59,4 +64,20 @@ int PrinterUtility::pop_bit()
     unsigned int fold = (unsigned) ((b & 0xffffffff) ^ (b >> 32));
     m_bitboard &= (m_bitboard - 1);
     return BIT_BOARD[(fold * 0x783a9b23) >> 26];
+}
+void PrinterUtility::fill_masks()
+{
+    for (int index = 0; index < 64; index++)
+    {
+        m_set_mask[index] |= (m_shifter << index);
+        m_clear_mask[index] = !m_set_mask[index];
+    }
+}
+void PrinterUtility::set_bit(int bit)
+{
+    m_bitboard |= m_set_mask[bit];
+}
+void PrinterUtility::clear_bit(int bit)
+{
+    m_bitboard &= m_clear_mask[bit];
 }

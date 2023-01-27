@@ -9,17 +9,14 @@ int main()
     U64 play_board = 0ULL;
     PrinterUtility printer(play_board);
     printer.print_bitboard();
-    std::cout << std::endl;
-    printer.set_square(D2);
-    printer.set_square(D3);
-    printer.set_square(D4);
+    std::cout<<std::endl;
+    printer.set_bit(62);
     printer.print_bitboard();
-    std::cout << std::endl;
-    // std::cout << printer.count_bits() << std::endl;
-    std::cout << printer.pop_bit() << std::endl;
+    std::cout<<std::endl;
+    printer.clear_bit(62);
     printer.print_bitboard();
-    std::cout << std::endl;
-    //std::cout << printer.count_bits();
+    std::cout<<std::endl;
+
 
 
 
