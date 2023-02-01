@@ -10,6 +10,12 @@ class Board
         Board();
         virtual ~Board();
 
+        /* getters */
+        std::array<int, BOARD_SIZE> get_board();
+        int get_en_pas();
+        int get_castle_permission();
+        int get_side();
+
     protected:
 
     private:
